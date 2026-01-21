@@ -68,7 +68,7 @@ class OrdersTab extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Order #${order.id.length > 8 ? order.id.substring(order.id.length - 8) : order.id}',
+                              'Order #${(order.id.isNotEmpty && order.id.length > 8) ? order.id.substring(order.id.length - 8) : order.id}',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,

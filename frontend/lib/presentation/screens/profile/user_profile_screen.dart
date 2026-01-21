@@ -7,6 +7,8 @@ import '../../../logic/blocs/auth/auth_state.dart';
 import '../../../core/utils.dart';
 import '../../widgets/app_appbar.dart';
 import '../../widgets/bottom_nav.dart';
+import '../../../data/services/auth_service.dart';
+import '../../../data/services/api_service.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
@@ -310,9 +312,26 @@ class UserProfileScreen extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              // TODO: Implement update profile API call
-              Navigator.pop(dialogContext);
-              AppUtils.showToast('Profile update coming soon!');
+              final name = nameController.text.trim();
+              final email = emailController.text.trim();
+              if (name.isEmpty || email.isEmpty) {
+                AppUtils.showToast('Name and email are required');
+                return;
+              }
+              () async {
+                try {
+                  final service = AuthService();
+                  await service.updateProfile(name: name, email: email);
+                  if (!context.mounted) return;
+                  Navigator.pop(dialogContext);
+                  AppUtils.showToast('Profile updated');
+                  // Refresh profile state
+                  context.read<AuthBloc>().add(AuthCheckStatus());
+                } catch (e) {
+                  final msg = ApiService.handleError(e);
+                  AppUtils.showToast(msg);
+                }
+              }();
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: cs.primary,
@@ -378,9 +397,20 @@ class UserProfileScreen extends StatelessWidget {
                 AppUtils.showToast('Passwords do not match!');
                 return;
               }
-              // TODO: Implement change password API call
-              Navigator.pop(dialogContext);
-              AppUtils.showToast('Password change coming soon!');
+              final current = currentPasswordController.text;
+              final next = newPasswordController.text;
+              () async {
+                try {
+                  final service = AuthService();
+                  await service.changePassword(current, next);
+                  if (!context.mounted) return;
+                  Navigator.pop(dialogContext);
+                  AppUtils.showToast('Password updated');
+                } catch (e) {
+                  final msg = ApiService.handleError(e);
+                  AppUtils.showToast(msg);
+                }
+              }();
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: cs.primary,

@@ -8,6 +8,7 @@ import 'presentation/screens/auth/registration_screen.dart';
 import 'presentation/screens/auth/forgot_password_screen.dart';
 import 'presentation/screens/products/products_screen.dart';
 import 'presentation/screens/products/product_detail_screen.dart';
+import 'presentation/screens/products/search_screen.dart';
 import 'presentation/screens/cart/cart_screen.dart';
 import 'presentation/screens/cart/checkout_screen.dart';
 import 'presentation/screens/orders/order_history_screen.dart';
@@ -39,6 +40,13 @@ class AppRouter {
       GoRoute(
         path: '/products',
         builder: (context, state) => const ProductsScreen(),
+      ),
+      GoRoute(
+        path: '/search',
+        builder: (context, state) {
+          final query = state.uri.queryParameters['q'];
+          return SearchScreen(initialQuery: query);
+        },
       ),
       GoRoute(
         path: '/product/:id',

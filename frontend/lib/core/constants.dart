@@ -15,6 +15,8 @@ class ApiConstants {
   static const String forgotPassword = '/api/users/forgot-password';
   static const String resetPassword =
       '/api/users/reset-password'; // Append /:token
+  // Logged-in change password (protected route)
+  static const String changePassword = '/api/users/password-reset';
   static const String verifyEmail = '/api/users/verify'; // Append /:token
 
   // Products

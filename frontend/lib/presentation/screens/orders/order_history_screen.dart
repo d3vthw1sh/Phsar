@@ -106,7 +106,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Order #${order.id.substring(order.id.length - 8)}',
+                                'Order #${(order.id.isNotEmpty && order.id.length > 8) ? order.id.substring(order.id.length - 8) : order.id}',
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,

@@ -17,33 +17,21 @@ import 'logic/blocs/admin/admin_bloc.dart';
 List<BlocProvider> globalProviders() {
   return [
     BlocProvider<AuthBloc>(
-      create: (context) => AuthBloc(
-        authService: AuthService(),
-      ),
+      create: (context) => AuthBloc(authService: AuthService()),
     ),
     BlocProvider<ProductsBloc>(
-      create: (context) => ProductsBloc(
-        productService: ProductService(),
-      ),
+      create: (context) => ProductsBloc(productService: ProductService()),
     ),
     BlocProvider<ProductDetailBloc>(
-      create: (context) => ProductDetailBloc(
-        productService: ProductService(),
-      ),
+      create: (context) => ProductDetailBloc(productService: ProductService()),
     ),
-    BlocProvider<CartBloc>(
-      create: (context) => CartBloc(),
-    ),
+    BlocProvider<CartBloc>(create: (context) => CartBloc()),
     BlocProvider<OrdersBloc>(
-      create: (context) => OrdersBloc(
-        orderService: OrderService(),
-      ),
+      create: (context) => OrdersBloc(orderService: OrderService()),
     ),
     BlocProvider<AdminBloc>(
-      create: (context) => AdminBloc(
-        apiService: ApiService(),
-        productService: ProductService(),
-      ),
+      create: (context) =>
+          AdminBloc(apiService: ApiService(), productService: ProductService()),
     ),
   ];
 }

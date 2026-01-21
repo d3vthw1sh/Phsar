@@ -16,26 +16,28 @@ Includes authentication, product browsing, cart system, checkout, admin tools, a
 ## Features
 
 ### User Features
-- Product listing with pagination  
-- Product detail screen with image carousel  
-- Add to cart, remove, and update quantity  
-- Cart persistence using local storage  
-- Checkout with shipping address  
-- Order success and failure screens  
-- Email/password authentication  
-- Google login  
-- User profile  
-- Order history *(in progress)*  
-- Product reviews *(planned)*  
-- Search and filters *(planned)*  
+
+- Product listing with pagination
+- Product detail screen with image carousel
+- Add to cart, remove, and update quantity
+- Cart persistence using local storage
+- Checkout with shipping address
+- Order success and failure screens
+- Email/password authentication
+- Google login
+- User profile
+- Order history
+- Product search with filters (category, price range, stock)
+- Product reviews _(planned)_
 
 ### Admin Features
-- Admin console screen  
-- View all users  
-- Delete users  
-- Order management (view, mark delivered, delete)  
-- Product CRUD *(planned)*  
-- Review moderation *(planned)*  
+
+- Admin console screen
+- View all users
+- Delete users
+- Order management (view, mark delivered, delete)
+- Product CRUD _(planned)_
+- Review moderation _(planned)_
 
 ## Project Structure
 
@@ -54,11 +56,12 @@ root/
 **Backend:** Laravel 12, MySQL, JWT Auth, TailwindCSS, Vite  
 **Database:** MySQL  
 **Authentication:** JWT  
-**Media:** Laravel public storage + Flutter assets  
+**Media:** Laravel public storage + Flutter assets
 
 # Getting Started
 
 ## 1. Clone the Project
+
 ```bash
 git clone <repository-url>
 cd ecommercial
@@ -80,6 +83,7 @@ php artisan serve --host=127.0.0.1 --port=8000
 ```
 
 Backend runs at:
+
 ```
 http://127.0.0.1:8000
 ```
@@ -93,14 +97,15 @@ flutter run
 ```
 
 On Android emulator:
+
 ```
 10.0.2.2:8000
 ```
 
 ## Quick Verification
 
-1. Visit: `http://127.0.0.1:8000/api/products`  
-2. Flutter app loads product images  
+1. Visit: `http://127.0.0.1:8000/api/products`
+2. Flutter app loads product images
 3. Default admin account:
 
 ```
@@ -111,28 +116,33 @@ Password: password123
 # Development Roadmap
 
 ### Completed
-- Product listing and detail  
-- Cart system  
-- Authentication flow  
-- Checkout flow  
-- Admin console  
-- Success/failure screens  
+
+- Product listing and detail
+- Cart system
+- Authentication flow
+- Checkout flow
+- Admin console
+- Success/failure screens
+- Search with filters
 
 ### In Progress
-- Order history  
-- Login flow improvements  
+
+- Login flow improvements
+- Order history improvements
 
 ### Planned
-- Reviews  
-- Search & filters  
-- Admin product CRUD  
-- Stripe integration  
-- UI/UX polish  
-- Full testing  
+
+- Reviews
+- Search & filters
+- Admin product CRUD
+- Stripe integration
+- UI/UX polish
+- Full testing
 
 # API Overview
 
 ### Auth
+
 ```
 POST /api/register
 POST /api/login
@@ -140,6 +150,7 @@ GET  /api/profile
 ```
 
 ### Products
+
 ```
 GET /api/products
 GET /api/products/{id}
@@ -147,6 +158,7 @@ POST /api/products/{id}/review
 ```
 
 ### Orders
+
 ```
 POST /api/checkout
 GET  /api/my-orders
@@ -156,6 +168,7 @@ GET  /api/orders
 # Developer Commands
 
 ### Laravel
+
 ```
 php artisan serve
 php artisan migrate --seed
@@ -163,6 +176,7 @@ php artisan test
 ```
 
 ### Flutter
+
 ```
 flutter run
 flutter build apk
@@ -170,9 +184,11 @@ flutter test
 ```
 
 # Known Issues
-- Some product images need conversion  
-- Order history incomplete  
-- Admin product CRUD missing  
+
+- Some product images need conversion
+- Order history incomplete
+- Admin product CRUD missing
 
 # License
+
 This project is for educational and portfolio use.

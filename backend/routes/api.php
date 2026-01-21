@@ -21,6 +21,7 @@ Route::post('/users/google-login', [AuthController::class, 'googleLogin']);
 
 // Products (public browsing)
 Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/search', [ProductController::class, 'search']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
 
 // Stripe Payment (supports both guest and authenticated checkout)

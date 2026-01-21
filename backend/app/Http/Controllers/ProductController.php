@@ -24,6 +24,55 @@ class ProductController extends Controller
         ]);
     }
 
+    // ---------------------------------------------------------
+    // SEARCH PRODUCTS
+    // ---------------------------------------------------------
+    public function search(Request $request)
+    {
+        $query = $request->query('q', '');
+        $category = $request->query('category');
+        $minPrice = $request->query('minPrice');
+        $maxPrice = $request->query('maxPrice');
+        $inStock = $request->query('inStock', false);
+
+        $products = Product::query();
+
+        // Search by name, brand, category, or description
+        if (!empty($query)) {
+            $products->where(function ($q) use ($query) {
+                $q->where('name', 'like', "%{$query}%")
+                    ->orWhere('brand', 'like', "%{$query}%")
+                    ->orWhere('category', 'like', "%{$query}%")
+                    ->orWhere('description', 'like', "%{$query}%");
+            });
+        }
+
+        // Filter by category
+        if (!empty($category) && $category !== 'All') {
+            $products->where('category', $category);
+        }
+
+        // Filter by price range
+        if (!empty($minPrice)) {
+            $products->where('price', '>=', (int)$minPrice);
+        }
+        if (!empty($maxPrice)) {
+            $products->where('price', '<=', (int)$maxPrice);
+        }
+
+        // Filter by stock
+        if ($inStock === 'true' || $inStock === true) {
+            $products->where('stock', '>', 0);
+        }
+
+        $results = $products->orderBy('created_at', 'desc')->get();
+
+        return response()->json([
+            'count' => count($results),
+            'products' => $results
+        ]);
+    }
+
     public function show($id)
     {
         $product = Product::find($id);

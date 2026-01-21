@@ -8,6 +8,7 @@ export 'data/models/cart_item_model.dart';
 export 'data/services/api_service.dart';
 export 'data/services/auth_service.dart';
 export 'data/services/product_service.dart';
+export 'data/services/search_service.dart';
 export 'data/services/order_service.dart';
 export 'data/services/stripe_service.dart';
 
@@ -49,6 +50,7 @@ export 'presentation/screens/auth/forgot_password_screen.dart';
 // Screens - Products
 export 'presentation/screens/products/products_screen.dart';
 export 'presentation/screens/products/product_detail_screen.dart';
+export 'presentation/screens/products/search_screen.dart';
 
 // Screens - Cart
 export 'presentation/screens/cart/cart_screen.dart';

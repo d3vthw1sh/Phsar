@@ -51,10 +51,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
           IconButton(
             icon: Icon(Icons.search, color: cs.onSurface),
             onPressed: () {
-              // TODO: Implement search functionality
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Search coming soon!')),
-              );
+              context.push('/search');
             },
           ),
         if (showCart)

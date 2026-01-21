@@ -57,6 +57,22 @@ class AuthService {
     }
   }
 
+  // Update Profile (name/email)
+  Future<User> updateProfile({
+    required String name,
+    required String email,
+  }) async {
+    try {
+      final response = await _apiService.dio.put(
+        ApiConstants.profile,
+        data: {'name': name, 'email': email},
+      );
+      return User.fromJson(response.data);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   // Send Reset Email
   Future<void> sendResetEmail(String email) async {
     try {
@@ -75,6 +91,21 @@ class AuthService {
       await _apiService.dio.post(
         '${ApiConstants.resetPassword}/$token',
         data: {'password': newPassword},
+      );
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // Change Password (logged-in)
+  Future<void> changePassword(
+    String currentPassword,
+    String newPassword,
+  ) async {
+    try {
+      await _apiService.dio.post(
+        ApiConstants.changePassword,
+        data: {'currentPassword': currentPassword, 'password': newPassword},
       );
     } catch (e) {
       rethrow;

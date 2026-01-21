@@ -203,7 +203,7 @@ class OrderDetailsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Order #${order.id.substring(order.id.length - 8)}',
+              'Order #${(order.id.isNotEmpty && order.id.length > 8) ? order.id.substring(order.id.length - 8) : order.id}',
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Container(
